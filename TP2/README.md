@@ -44,3 +44,19 @@ CMD : docker cp D:\YNOV\DEVOPS\TP2\html\index.html nginx-html:/usr/share/nginx/h
 "Successfully copied 2.05kB to nginx-html:/usr/share/nginx/html/index.html"
 
 ![image](https://github.com/KaoDje/DevOpsYnovAntoine/assets/113984329/eef36d5e-80b2-4721-b367-9ac66db69db9)
+
+# 4. Builder une image
+
+## a.b. Création et exécution de l'image nginx-html
+Dockerfile : 
+
+```
+FROM nginx:stable-alpine3.17
+COPY ./html /usr/share/nginx/html
+```
+
+CMD : docker build -t nginx-html .
+
+CMD : docker run -dp 8080:80 nginx-html
+
+![image](https://github.com/KaoDje/DevOpsYnovAntoine/assets/113984329/eef36d5e-80b2-4721-b367-9ac66db69db9)
