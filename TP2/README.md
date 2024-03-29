@@ -82,3 +82,16 @@ Les questions 3 et 4 explorent deux méthodes différentes pour servir un fichie
 **Invonvénients :**
 + Mises à jour moins flexibles : Pour modifier le fichier index.html, il faut reconstruire et redéployer l'image, ce qui peut être plus lent que de simplement modifier un fichier sur un volume.
 + Gestion des versions : Chaque changement nécessite une nouvelle image, ce qui peut entraîner une prolifération d'images si les mises à jour sont fréquentes.
+
+# 5. Utiliser une base de données dans un container
+
+CMD : docker network create local-network
+
+CMD : docker run --name mysql-container --network local-network -e MYSQL-ROOT-PASSWORD=root -d mysql:8.3.0
+
+CMD : docker run --name phpadmin-container --network local-network -d -p 8080:80 phpmyadmin/phpmyadmin
+
+![image](https://github.com/Devops-Dev-B-2024/DevOpsYnovAntoine/assets/113984329/edc57233-0e93-40cb-a904-6f36db8a76e0)
+
+
+
