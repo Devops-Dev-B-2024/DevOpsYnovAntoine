@@ -60,3 +60,25 @@ CMD : docker build -t nginx-html .
 CMD : docker run -dp 8080:80 nginx-html
 
 ![image](https://github.com/KaoDje/DevOpsYnovAntoine/assets/113984329/eef36d5e-80b2-4721-b367-9ac66db69db9)
+
+## c. Avantages et inconvénients de chaque procédure
+
+Les questions 3 et 4 explorent deux méthodes différentes pour servir un fichier index.html. La différence clé entre ces méthodes réside dans la façon dont le fichier index.html est rendu disponible au sein du container nginx.
+
+### Utilisation du volume (option -v) :
+**Avantages :**
++ Développement et test rapides : Le fichier index.html peut être mis à jour facilement sans reconstruire ou redémarrer le container. Cette solution est idéal pendant le développement.
++ Séparation des données et de l'application : Le contenu servi peut être modifié sans modifier l'image du conteneur, ce qui favorise la réutilisabilité.
+
+**Invonvénients :**
++ Complexité de la commande : Executer un container sans monter l'image nécessite une commande plus complexe et longue, ce qui peut favoriser les erreurs.
++ Moins portable : Le conteneur dépend du fichier index.html sur l'hôte. Pour déployer le conteneur ailleurs, il faudra également gérer le transfert du fichier index.html.
+
+### Constrution d'une image personnalisée :
+**Avantages :**
++ Portabilité : L'image contient tout le nécessaire pour servir le fichier index.html, ce qui facilite le partage ou le déploiement sur différents hôtes sans configurations supplémentaires.
++ Simplicité et clarté : Le processus de déploiement est simplifié car il ne dépend pas de fichiers externes ou de configurations spécifiques à l'hôte.
+
+**Invonvénients :**
++ Mises à jour moins flexibles : Pour modifier le fichier index.html, il faut reconstruire et redéployer l'image, ce qui peut être plus lent que de simplement modifier un fichier sur un volume.
++ Gestion des versions : Chaque changement nécessite une nouvelle image, ce qui peut entraîner une prolifération d'images si les mises à jour sont fréquentes.
